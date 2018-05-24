@@ -1,317 +1,337 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no, user-scalable=no">
-        <meta name="description" content="Projet SIMPLonMARS3 - Experience graphique">
-        <meta name="author" content="Elise, Kevin, Sylvain">
-        <title>A SIMPLe Trip To MARS</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <script src="js/stats.js"></script>
-        <script src="js/options.js"></script>
-        <script src="js/mousepos.js"></script>
-        <script src="js/spaceship.js"></script>
-        <script src="js/pathcanvas.js"></script>
-        <script src="js/masterscript.js"></script>
-        <script src="js/menu.js"></script>
-    </head>
-    <body>
-        <div id="wrapper">
-            <img id="spaceship" src="img/tintin_spaceship.gif" alt="spaceship" />
 
-            <!-- Elements de tests -->
-            <article id="pages">
-                <table id="S">
-                    <tbody>
-                        <tr>
-                            <td>
-                                Highest Score :
-                            </td>
-                            <td id="HS"></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                Last Score :
-                            </td>
-                            <td id="LS"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <aside id="optionspage">
-                    <section>
-                        <div>
-                            <button id="clearoptions">
-                                Clear Options
-                            </button>
-                            <button id="clearstats">
-                                Clear Stats
-                            </button>
-                        </div>
-                        <div>
-                            <button id="soundoff">
-                                Disable Sound
-                            </button>
-                            <button id="soundon">
-                                Enable Sound
-                            </button>
-                        </div>
-                        <div>
-                            <button id="musicoff">
-                                Disable Music
-                            </button>
-                            <button id="musicon">
-                                Enable Music
-                            </button>
-                        </div>
-                        <div>
-                            <button id="normalgameonlyoff">
-                                Disable Normal Game Only
-                            </button>
-                            <button id="normalgameonlyon">
-                                Enable Normal Game Only
-                            </button>
-                        </div>
-                        <div>
-                            <button id="bossgameonlyoff">
-                                Disable Boss Game Only
-                            </button>
-                            <button id="bossgameonlyon">
-                                Enable Boss Game Only
-                            </button>
-                        </div>
-                        <div>
-                            <button id="risingbossonlyoff">
-                                Disable Rising Boss Only
-                            </button>
-                            <button id="risingbossonlyon">
-                                Enable Rising Boss Only
-                            </button>
-                        </div>
-                        <div>
-                            <button id="fallingbossonlyoff">
-                                Disable Falling Boss Only
-                            </button>
-                            <button id="fallingbossonlyon">
-                                Enable Falling Boss Only
-                            </button>
-                        </div>
-                    </section>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+  <meta name="description" content="Projet SIMPLonMARS3 - Experience graphique">
+  <meta name="author" content="Elise, Kevin, Sylvain">
+  <title>A SIMPLe Trip To MARS</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="js/stats.js"></script>
+  <script src="js/options.js"></script>
+  <script src="js/mousepos.js"></script>
+  <script src="js/spaceship.js"></script>
+  <script src="js/pathcanvas.js"></script>
+  <script src="js/masterscript.js"></script>
+  <script src="js/menu.js"></script>
+</head>
 
-                    <button class="menubutton">
+<body>
+  <div id="wrapper">
+    <img id="spaceship" src="img/spaceship.png" alt="spaceship" />
+
+    <!-- Elements de tests -->
+    <article id="pages">
+      <table id="S">
+        <tbody>
+          <tr>
+            <td>
+              Highest Score :
+            </td>
+            <td id="HS"></td>
+          </tr>
+          <tr>
+            <td>
+              Last Score :
+            </td>
+            <td id="LS"></td>
+          </tr>
+        </tbody>
+      </table>
+      <aside id="optionspage">
+        <section>
+          <div>
+            Sound
+            <button id="soundon">
+                            On
+                          </button>
+            <button id="soundoff">
+                                Off
+                            </button>
+          </div>
+          <div>
+            Music
+            <button id="musicon" onclick="document.getElementById('music').muted = false">
+                            On
+                          </button>
+            <button id="musicoff" onclick="document.getElementById('music').muted = true">
+                                Off
+                            </button>
+          </div>
+          <div>
+            Enable Normal game only
+            <button id="normalgameonlyon">
+                                Yes
+                            </button>
+            <button id="normalgameonlyoff">
+                              No
+                            </button>
+          </div>
+          <div>
+            Enable boss games only
+            <button id="bossgameonlyon">
+                                Yes
+                            </button>
+            <button id="bossgameonlyoff">
+                              No
+                            </button>
+          </div>
+          <div>
+            Enable Rising boss only
+            <button id="risingbossonlyon">
+                                Yes
+                            </button>
+            <button id="risingbossonlyoff">
+                              No
+                            </button>
+          </div>
+          <div>
+            Enable Falling boss only
+            <button id="fallingbossonlyon">
+                                Yes
+                            </button>
+            <button id="fallingbossonlyoff">
+                              No
+                            </button>
+          </div>
+        </section>
+        <div>
+          <button id="clearoptions">
+                        Clear Options
+                      </button>
+          <button id="clearstats">
+                        Clear Stats
+                      </button>
+        </div>
+
+        <button class="menubutton">
                         Return to Menu
                     </button>
-                </aside>
+      </aside>
 
-                <main id="mainpage">
-                  <img src="img/titlesttm.png" alt="Title SIMPLE TRIP TO MARS" id="titleimg"/>
-                <!--
+      <main id="mainpage">
+        <img src="img/titlesttm.png" alt="Title SIMPLE TRIP TO MARS" id="titleimg" />
+        <!--
                     Button Launch game (surement une flèche)
                 -->
-                <button id="optionsbutton">
+        <button id="optionsbutton">
                     Options
                 </button>
-                <button id="statsbutton">
+        <button id="statsbutton">
                     Stats
                 </button>
-                <button id="playbutton">
+        <button id="playbutton">
                     Play
                 </button>
-                </main>
+      </main>
 
-                <aside id="statspage">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>
-                                    GENERAL STATS
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    Total Games Played :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Total Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Highest Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Average Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Last Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>
-                                    BOSS STATS
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    Total Boss Waves :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Total Boss Total Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Total Boss Highest Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Total Boss Average Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Total Boss Last Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>
-                                    RISING BOSS STATS
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    Total Rising Boss Waves :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Rising Boss Total Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Rising Boss Highest Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Rising Boss Average Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Rising Boss Last Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>
-                                    FALLING BOSS STATS
-                                </th>
-                                <th></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    Total Falling Boss Waves :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Falling Boss Total Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Falling Boss Highest Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Falling Boss Average Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    Falling Boss Last Score :
-                                </td>
-                                <td></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div>
-                        <button id="prevstats">
+      <aside id="statspage">
+        <table id="firsttable">
+          <thead>
+            <tr>
+              <th>
+                GENERAL STATS
+              </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Total Games Played :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Total Score :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Highest Score :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Average Score :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Last Score :
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <table>
+          <thead>
+            <tr>
+              <th>
+                BOSS STATS
+              </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Total Boss Waves :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Total Boss Total Score :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Total Boss Highest Score :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Total Boss Average Score :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Total Boss Last Score :
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <table>
+          <thead>
+            <tr>
+              <th>
+                RISING BOSS STATS
+              </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Total Rising Boss Waves :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Rising Boss Total Score :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Rising Boss Highest Score :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Rising Boss Average Score :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Rising Boss Last Score :
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <table id="lasttable">
+          <thead>
+            <tr>
+              <th>
+                FALLING BOSS STATS
+              </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                Total Falling Boss Waves :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Falling Boss Total Score :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Falling Boss Highest Score :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Falling Boss Average Score :
+              </td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Falling Boss Last Score :
+              </td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="stats">
+          <button id="prevstats">
                             Prev
                         </button>
-                        <button class="menubutton">
-                            Return to Menu
-                        </button>
-                        <button id="nextstats">
+          <button id="nextstats">
                             Next
                         </button>
-                    </div>
-                    <div id="credits">
-                      <p>
-                        Game developed by :
-                      </p>
-                      <section><a target="_blank" href="https://github.com/smontel"><img src="img/avatars/sylvainavatar.png" alt="Sylvain - Chicken Toast" /></a><p>Sylvain Montel</p></section>
-                      <section><a target="_blank" href="https://github.com/eukavlin"><img src="img/avatars/eliseavatar.png" alt="Élise - Eukavlin" /></a><p>Elise Brodin</p></section>
-                      <section><a target="_blank" href="https://github.com/metallou"><img src="img/avatars/kevinavatar.png" alt="Kevin - Metallou" /></a><p>Kevin Castejon</p></section>
-                      <br>
-                      <p>
-                       Music : <a target="_blank" href="https://www.youtube.com/watch?v=4qsWFFuYZYI">Rymdreglage - 8-bit trip</a>
-                      </p>
-                </aside>
-            </article>
-            <canvas id="canvas1"></canvas>
+          <br>
+          <button class="menubutton">
+                            Return to Menu
+                        </button>
         </div>
-    </body>
+        <div id="credits">
+          <p>
+            Game developed by :
+          </p>
+          <section><a target="_blank" href="https://github.com/smontel"><img src="img/avatars/sylvainavatar.png" alt="Sylvain - Chicken Toast" /></a>
+            <p>Sylvain Montel</p>
+          </section>
+          <section><a target="_blank" href="https://github.com/eukavlin"><img src="img/avatars/eliseavatar.png" alt="Élise - Eukavlin" /></a>
+            <p>Elise Brodin</p>
+          </section>
+          <section><a target="_blank" href="https://github.com/metallou"><img src="img/avatars/kevinavatar.png" alt="Kevin - Metallou" /></a>
+            <p>Kevin Castejon</p>
+          </section>
+          <br>
+          <p>
+            Music : <a target="_blank" href="https://www.youtube.com/watch?v=4qsWFFuYZYI">Rymdreglage - 8-bit trip</a>
+          </p>
+      </aside>
+    </article>
+    <canvas id="canvas1"></canvas>
+    </div>
+<audio id="music" controls="false" autoplay="true">
+   <source src="./mp3/rymdreglage-8-bit-trip.mp3" type="audio/mpeg">
+     <p>If you are reading this, it is because your browser does not support the audio element.     </p>
+ </audio>
+</body>
+
 </html>

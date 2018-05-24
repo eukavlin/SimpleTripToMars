@@ -212,7 +212,7 @@ const mastergamescript = function()
                     block = document.createElement("div");
                     block.classList.add("danger");
                     img = document.createElement("img");
-                    const randd=Math.round(Math.random() * 1000 * 4)%4;
+                    const randd=Math.round(Math.random() * 1000 * 3)%3;
                     const randrot=Math.round(Math.random() * 1000 * 6)%6;
                     switch(randd){
                         case 0:
@@ -223,9 +223,6 @@ const mastergamescript = function()
                             break;
                         case 2:
                             img.src = "img/asteroids/ast_darkgrey.png";
-                            break;
-                        case 3:
-                            img.src = "img/asteroids/ast_simplon.png";
                             break;
                     }
                     switch(randrot){
@@ -261,11 +258,11 @@ const mastergamescript = function()
         }
 
         //Increase number of blocks in the line at each step
-        let nbCases = 5 + scr;
+        let nbCases =Math.floor(Math.random() * 10) + 5
         //Limitation to 100 cases
-        if(nbCases > 100) {
-            nbCases = 100;
-        }
+        // if(nbCases > 100) {
+        //     nbCases = 100;
+        // }
 
         //Create all the blocs
         const container = createContainer();
@@ -408,7 +405,7 @@ const mastergamescript = function()
             }
         } else {
             //Fade Out Screen
-            blackScreen(1000);
+            blackscreen2(1000);
             //Stops Game Call
             clearInterval(intervalID);
             //Update LocalStorage and Delete Boss (if boss)

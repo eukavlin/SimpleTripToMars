@@ -1,10 +1,7 @@
 "use strict"
 
-const initMouseX = 0.5*window.innerWidth;
-const initMouseY = 0.55*window.innerHeight;
-
-let mouseX = initMouseX;
-let mouseY = initMouseY;
+let mouseX = 0.5*window.innerWidth;
+let mouseY = 0.55*window.innerHeight;
 
 const updateMousePos = function(event)
 {
